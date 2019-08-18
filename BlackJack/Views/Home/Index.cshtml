@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <div class="row game-header">
+        <button id="btn-new-game" class="btn btn-success pull-left" style="width:120px;margin-left:10px">New Game</button>      
+        <span class="pull-right" style="margin-right:20px;color:white;font-size:18px">Maryam Naji</span>
+    </div>
+
+    <div id="start-board">
+        <img src="http://casinoglobalclub.com/wp-content/uploads/2017/03/logo.png" />
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#btn-new-game").on("click", function () {
+                $.ajax({
+                    url: "/Home/NewGame",
+                    type: "GET"
+                })
+                    .done(function (data) {
+                        $("#start-board").html(data)
+                    });
+            });
+        });
+
+    </script>
+

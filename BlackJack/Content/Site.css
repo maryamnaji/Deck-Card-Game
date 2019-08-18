@@ -1,0 +1,93 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:forestgreen;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.game-footer {
+    padding: 10px;
+    background-color: #c35228;
+    height: 60px;
+    border: solid black 2px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.game-header {
+    padding: 10px;
+    background-color: #c35228;
+    height: 60px;
+    border: solid black 2px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.player-section {
+    margin-top: 80px;
+}
+.container {
+    margin-top: 10px;
+}
+
+.display-score {
+    background-color: black;
+    height: 250px;
+    color: white;
+    margin-top: 10px;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+.display-winner {
+    background-color: orangered;
+    height: 50px;
+    color: white;
+    margin-top: 10px;
+    border: solid black 2px;
+    border-radius: 5px;
+    font-size:20px;
+    padding-top:8px
+}
+
+.point-icon {
+    text-align: center;
+}
+.point-icon img {
+    margin-top: 20px;
+    margin-bottom:30px;
+}
+
+#start-board{
+    text-align:center;
+}
+.form-control {
+    display:inline-block;
+}

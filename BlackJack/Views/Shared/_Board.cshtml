@@ -1,0 +1,96 @@
+﻿<div class="row">
+    <div class="col-md-10">
+        <div class="dealer-section">
+            @foreach (var card in Model.Dealer)
+            {
+                string path;
+                if (!card.IsHidden || Model.IsStand)
+                {
+                    path = "/Content/Images/" + card.Pattern + card.Name + ".png";
+                }
+                else
+                {
+                    path = "/Content/Images/back.png";
+                }
+                <img src="@path" width="150" height="150" />
+            }
+        </div>
+        <div class="player-section">
+            @foreach (var card in Model.Player)
+            {
+                string path = "/Content/Images/" + card.Pattern + card.Name + ".png";
+                <img src="@path" width="150" height="150" />
+            }
+        </div>
+    </div>
+
+    <div class="col-md-2" style="margin-top:50px">
+        <div class="input-group">
+            <input id="bet" type="number" min="1" max="100" class="form-control bfh-number" style="text-align:center" placeholder="Bet" />
+            <span class="input-group-btn">
+                <button id="btn-start" class="btn btn-success" style="margin-left:5px">Go</button>
+            </span>
+        </div>
+        <div class="display-winner">
+            @Model.Status
+        </div>
+        <div class="display-score">
+            <div>
+                <span>Dealer Score : @Model.DealerScore </span>
+            </div>
+            <div class="point-icon">
+                <img src="https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/cup-512.png" height="100" width="100" />
+            </div>
+
+            <div>
+                <span>Player Score : @Model.PlayerScore </span>
+            </div>
+            <div>
+                <span>Balance : @Model.Balance </span>
+            </div>
+            <div>
+                <span>Bet : @Model.Bet </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row game-footer">
+    <button id="btn-hit" class="btn btn-success" style="width:80px">Hit </button>
+    <button id="btn-stand" class="btn btn-success" style="width:80px">Stand</button>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn-start").on("click", function () {
+            var betValue = $("#bet").val();
+            $.ajax({
+                url: "/Home/Start",
+                type: "GET",
+                data: { bet: betValue }
+            })
+                .done(function (data) {
+                    $("#start-board").html(data)
+                });
+        });
+
+        $("#btn-hit").on("click", function () {
+            $.ajax({
+                url: "/Home/Hit",
+                type: "GET"
+            })
+                .done(function (data) {
+                    $("#start-board").html(data)
+                });
+        });
+
+        $("#btn-stand").on("click", function () {
+            $.ajax({
+                url: "/Home/Stand",
+                type: "GET"
+            })
+                .done(function (data) {
+                    $("#start-board").html(data)
+                });
+        });
+    });
+</script>
+
